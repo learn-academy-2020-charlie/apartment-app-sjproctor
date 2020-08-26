@@ -21,6 +21,7 @@ class App extends Component {
     const {
       logged_in,
       sign_in_route,
+      sign_up_route,
       sign_out_route
     } = this.props
     console.log("logged_in", logged_in)
@@ -62,6 +63,7 @@ class App extends Component {
         <Footer
           logged_in={ this.props.logged_in }
           sign_in_route={ this.props.sign_in_route }
+          sign_up_route={ this.props.sign_up_route }
           sign_out_route={ this.props.sign_out_route }
         />
       </Router>
