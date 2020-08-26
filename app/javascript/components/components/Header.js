@@ -44,9 +44,17 @@ class Header extends Component{
                     <NavLink to="/index">Apartment List</NavLink>
                   </NavItem>
                   { this.props.logged_in &&
-                    <NavItem>
-                      <a href={ this.props.sign_out_route }>Sign Out</a>
-                    </NavItem>
+                    <>
+                      <NavItem>
+                        <a href="/myapts">My Apartments</a>
+                      </NavItem>
+                      <NavItem>
+                        <a href="/new">Add a New Apartment</a>
+                      </NavItem>
+                      <NavItem>
+                        <a href={ this.props.sign_out_route }>Sign Out</a>
+                      </NavItem>
+                    </>
                   }
                   { !this.props.logged_in &&
                     <NavItem>

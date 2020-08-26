@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import Header from './components/Header'
 import Footer from './components/Footer'
 import ApartmentIndex from './pages/ApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
+import ApartmentNew from './pages/ApartmentNew'
 import Home from './pages/Home'
 import {
   BrowserRouter as Router,
@@ -25,7 +27,7 @@ class App extends Component {
       if(response.status === 200){
          // convert the response to json
          // returns a promise
-        return(response.json())
+        return response.json()
       }
     })
     .then(apartmentArray => {
@@ -37,15 +39,45 @@ class App extends Component {
     })
   }
 
+  createNewApartment = (apartment) => {
+    console.log(apartment)
+      return fetch("/apartments", {
+      // converting an object to a string
+      body: JSON.stringify(apartment),
+      // specify the info being sent in JSON and the info returning should be JSON
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // HTTP verb so the correct endpoint is invoked on the server
+      method: "POST"
+    })
+    .then(response => {
+      // if the response is good  - reload the cats
+      if(response.status === 200){
+        this.componentDidMount()
+      }
+      return response
+    })
+    .catch(errors => {
+      console.log("create errors:", errors)
+    })
+  }
+
   render () {
     const {
       logged_in,
       sign_in_route,
-      sign_out_route
+      sign_out_route,
+      current_user
     } = this.props
     console.log("logged_in", logged_in)
     return (
       <Router>
+        <Header
+          logged_in={ this.props.logged_in }
+          sign_in_route={ this.props.sign_in_route }
+          sign_out_route={ this.props.sign_out_route }
+        />
         <Switch>
           <Route
             exact path="/"
@@ -77,6 +109,15 @@ class App extends Component {
                 <ApartmentShow apartment={ apartment } />
               )
             }}
+          />
+          <Route
+            path="/new"
+            render={ (props) =>
+              <ApartmentNew
+                createNewApartment={ this.createNewApartment }
+                current_user={ current_user }
+              />
+            }
           />
         </Switch>
         <Footer

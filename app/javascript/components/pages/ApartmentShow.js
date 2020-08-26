@@ -1,6 +1,5 @@
 // Apartments have: a street designation, a city, state, a manager's name, manager's contact email, monthly rental price, bedrooms, bathrooms, and whether they allow pets
 import React, { Component } from 'react'
-import Header from '../components/Header'
 import { Button, Card, CardTitle, Col, Row } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -9,11 +8,6 @@ class ApartmentShow extends Component{
     let { apartment } = this.props
     return(
       <React.Fragment>
-        <Header
-          logged_in={ this.props.logged_in }
-          sign_in_route={ this.props.sign_in_route }
-          sign_out_route={ this.props.sign_out_route }
-        />
         <h3>One Apartment</h3>
         <Row id="cards">
             <Col md="6">

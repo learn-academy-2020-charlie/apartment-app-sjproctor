@@ -18,6 +18,8 @@ As a developer, I have been commissioned to create an application where a user c
 - pass state data to ApartmentIndex
 - map over data and display
 - create link to ApartmentIndex
+- added controller method for index
+- added fetch request to index route
 
 **As an un-registered guest on the website, I can click on an apartment to view its details**
 - create ApartmentShow route
