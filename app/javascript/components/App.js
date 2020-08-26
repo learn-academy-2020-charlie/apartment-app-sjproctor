@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Footer from './components/Footer'
 import ApartmentIndex from './pages/ApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
 import Home from './pages/Home'
@@ -47,8 +48,22 @@ class App extends Component {
               />
             }
           />
-          <Route exact path="/show/:id" component={ ApartmentShow }/>
+          <Route
+            path={"/show/:id"}
+            render={ (props) => {
+              let id = props.match.params.id
+              let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
+              return (
+                <ApartmentShow apartment={ apartment } />
+              )
+            }}
+          />
         </Switch>
+        <Footer
+          logged_in={ this.props.logged_in }
+          sign_in_route={ this.props.sign_in_route }
+          sign_out_route={ this.props.sign_out_route }
+        />
       </Router>
     );
   }

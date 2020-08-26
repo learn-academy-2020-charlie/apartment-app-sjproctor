@@ -17,7 +17,7 @@ let mockApts = [
     id: 2,
     street: "742 Evergreen Terrace",
     city: "Springfield",
-    state: "Yes",
+    state: "Anystate",
     manager: "Homer",
     email: "hs@dounut.com",
     price: "500",

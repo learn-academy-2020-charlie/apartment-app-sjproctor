@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import { Button, Card, CardTitle, Col, Row } from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -36,7 +35,6 @@ class ApartmentIndex extends Component{
             )
           })}
       </Row>
-      <Footer />
       </React.Fragment>
     )
   }
