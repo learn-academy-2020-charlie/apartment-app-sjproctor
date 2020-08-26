@@ -8,20 +8,39 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import mockApartments from './mockApartments.js'
+// import mockApartments from './mockApartments.js'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      apartments: mockApartments
+      apartments: []
     }
   }
+
+  componentDidMount(){
+    fetch("/apartments")
+    .then(response => {
+      // checking for a successfull response
+      if(response.status === 200){
+         // convert the response to json
+         // returns a promise
+        return(response.json())
+      }
+    })
+    .then(apartmentArray => {
+      // set the state with the data from the backend into the empty array
+      this.setState({ apartments: apartmentArray })
+    })
+    .catch(errors => {
+      console.log("index errors:", errors)
+    })
+  }
+
   render () {
     const {
       logged_in,
       sign_in_route,
-      sign_up_route,
       sign_out_route
     } = this.props
     console.log("logged_in", logged_in)
@@ -30,7 +49,7 @@ class App extends Component {
         <Switch>
           <Route
             exact path="/"
-            render={ (prop) =>
+            render={ (props) =>
               <Home
                 logged_in={ logged_in }
                 sign_in_route={ sign_in_route }
