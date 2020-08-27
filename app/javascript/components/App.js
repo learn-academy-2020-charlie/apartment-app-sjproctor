@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import ApartmentIndex from './pages/ApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
 import ApartmentNew from './pages/ApartmentNew'
+import MyApartments from './pages/MyApartments'
 import Home from './pages/Home'
 import {
   BrowserRouter as Router,
@@ -119,6 +120,19 @@ class App extends Component {
               />
             }
           />
+          { logged_in &&
+            <Route
+            path="/myapartments"
+            render={ (props) => {
+              let user = current_user.id
+              let apartments = this.state.apartments.filter(apartment => apartment.user_id === user)
+              console.log(user, apartments)
+              return (
+                <MyApartments apartments={ apartments } />
+              )
+            }}
+            />
+          }
         </Switch>
         <Footer
           logged_in={ this.props.logged_in }

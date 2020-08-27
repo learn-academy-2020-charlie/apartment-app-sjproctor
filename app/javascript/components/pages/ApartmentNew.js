@@ -131,6 +131,7 @@ class ApartmentNew extends Component{
             </Form>
           </div>
         </div>
+        { this.state.success && <Redirect to="/myapartments" />}
       </React.Fragment>
     )
   }

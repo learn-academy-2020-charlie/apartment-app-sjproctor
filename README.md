@@ -45,5 +45,13 @@ As a developer, I have been commissioned to create an application where a user c
 - completed with Header element story
 
 **As a logged in user, I can go to a new apartment page with a form and create a new apartment**
+- add route that only renders when a user is logged in
+- added form and inputs from Reactstrap
+- set the form values in state
+- pass the form object to App.js
+- see the logged form in console
+- add a create controller method and strong params
+- add skip_before_action to application controller
+- update create method in App.js to perform a fetch call
 
 **As a logged in user, I can edit the information for any apartment I have created, but I cannot edit the information for apartments that belong to someone else**

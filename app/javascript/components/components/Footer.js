@@ -16,7 +16,7 @@ class Footer extends Component{
             { this.props.logged_in &&
               <>
                 <NavItem>
-                  <a href="/myapts">My Apartments</a>
+                  <a href="/myapartments">My Apartments</a>
                 </NavItem>
                 <NavItem>
                   <a href="/new">Add a New Apartment</a>
